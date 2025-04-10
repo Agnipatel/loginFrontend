@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white text-black p-4 shadow-md sticky top-0 z-50 w-full">
+    <nav className="bg-red-400 text-black p-4 shadow-md sticky top-0 z-50 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-red-600">
           <h1 className="text-xl font-bold">Bhagavad Gita</h1>

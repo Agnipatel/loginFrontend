@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Arjun = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+    <div className="min-h-screen bg-pink-400-100 flex flex-col items-center p-6">
      <h1 className="text-4xl font-bold text-red-700 mb-6 ">Chapter</h1>
 
       {/* Left-to-Right Container */}
