@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <Silder />
       <Chaptersmain />
-      hello
+      
       <Lifepage/>
       
     </>
