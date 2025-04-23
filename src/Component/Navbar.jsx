@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-red-400 text-black p-4 shadow-md sticky top-0 z-50 w-full">
+    <nav className=" text-black p-4 shadow-md sticky top-0 z-50 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-red-600">
           <h1 className="text-xl font-bold">Bhagavad Gita</h1>
@@ -20,6 +20,7 @@ const Navbar = () => {
           <Link to="/login" className="hover:underline">Login</Link>
           <Link to="/signup" className="hover:underline">Signup</Link>
           <Link to="/profile" className="hover:underline">Profile</Link>
+          
         </div>
 
         {/* Mobile Menu Button */}

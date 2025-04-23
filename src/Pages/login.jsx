@@ -7,12 +7,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setLoading(true); // Start loading
+    setLoading(true);
 
     if (!email || !password) {
       setError("Email and password are required.");
@@ -27,25 +27,34 @@ const Login = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log("Login successful", res.data);
-
-      // Store token in localStorage
       localStorage.setItem("token", res.data.token);
-
       alert("Login successful!");
-      navigate("/"); // Redirect to dashboard or home
+      navigate("/");
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Invalid email or password.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-80">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-100">
+      {/* Background animation image (put the file in public folder) */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://i.pinimg.com/originals/c9/dc/aa/c9dcaaa0674f609e63c7556d736a2aa8.gif" // ⚠️ Place your GIF in `public/gita-animation.gif`
+          alt="Gita Background"
+          className="w-full h-full object-cover opacity-30 animate-pulse"
+        />
+      </div>
+
+      {/* Login Form */}
+      <form className="relative z-10 bg-white p-8 rounded-lg shadow-md w-80" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-bold mb-2 text-center">Login</h2>
+        <p className="text-sm italic text-center text-yellow-700 mb-4">
+          “You have the right to work, but never to the fruit of work.” – Bhagavad Gita
+        </p>
 
         {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
 
@@ -71,7 +80,6 @@ const Login = () => {
           />
         </div>
 
-        {/* Forgot Password Link */}
         <div className="text-right mb-4">
           <Link to="/forgot-password" className="text-blue-500 text-sm hover:underline">
             Forgot Password?
@@ -81,7 +89,7 @@ const Login = () => {
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-          disabled={loading} // Disable when loading
+          disabled={loading}
         >
           {loading ? "Logging in..." : "Login"}
         </button>

@@ -17,31 +17,15 @@ const SliderPage = () => {
       >
         <SwiperSlide>
           <video
-            src="https://videos.pexels.com/video-files/31069060/13277245_2560_1440_60fps.mp4"
+            src="https://uptourism.gov.in/videos/tourism_vedio_140425.mp4"
             className="w-full h-full object-cover"
             autoPlay
             loop
             muted
           />
         </SwiperSlide>
-        <SwiperSlide>
-          <video
-            src="https://videos.pexels.com/video-files/15911968/15911968-uhd_2560_1440_25fps.mp4"
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <video
-            src="https://videos.pexels.com/video-files/18458586/18458586-hd_1920_1080_30fps.mp4"
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-          />
-        </SwiperSlide>
+        
+      
       </Swiper>
     </div>
   );

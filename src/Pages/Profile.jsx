@@ -1,35 +1,32 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const ProfilePage = ({ userEmail }) => {
+const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch(`http://localhost:5000/api/user?email=${userEmail}`);
-        const data = await res.json();
-        setUser(data);
-      } catch (err) {
-        console.error("Failed to fetch user:", err);
-      }
-    };
-    
-    if (userEmail) fetchUser();
-  }, [userEmail]);
+    axios.get("http://localhost:5000/api/user/profile", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT token saved at login
+      },
+    })
+    .then((res) => setUser(res.data))
+    .catch((err) => console.error("Profile fetch error:", err));
+  }, []);
 
-  if (!user) return <p>Loading...</p>;
+  if (!user) return <div>Loading...</div>;
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
-      <img src={user.photoURL} alt="Profile" width={150} height={150} />
+    <div>
+      <img src={user.photoURL} alt="Profile" />
       <h2>{user.name}</h2>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Phone:</strong> {user.phone || "Not provided"}</p>
-      <p><strong>Bio:</strong> {user.bio}</p>
-      <p><strong>Address:</strong> {user.address}</p>
-      <p><strong>Joined:</strong> {new Date(user.createdAt).toLocaleDateString()}</p>
+      <p>Email: {user.email}</p>
+      <p>Phone: {user.phone || "N/A"}</p>
+      <p>Address: {user.address || "N/A"}</p>
+      <p>Bio: {user.bio}</p>
+      <p>Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
     </div>
   );
 };
 
-export default ProfilePage;
+export default Profile;

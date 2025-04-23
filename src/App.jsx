@@ -20,6 +20,8 @@ import Chapter10 from "./Pages/Chapter10";
 import Chapter11 from "./Pages/Chapter11";
 import Lifepage from "./Pages/Lifepage";
 
+
+
 import Profile from "./Pages/Profile";
 
 
@@ -48,7 +50,7 @@ function App() {
         <Route path="/Chapter11" element={<Chapter11 />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/Lifepage" element={<Lifepage />} />
-
+        
 
         
         
