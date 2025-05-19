@@ -4,10 +4,12 @@ import axios from "axios";
 const Profile = () => {
   const [user, setUser] = useState(null);
 
+  
+
   useEffect(() => {
     axios.get("http://localhost:5000/api/user/profile", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT token saved at login
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
     .then((res) => setUser(res.data))
@@ -18,12 +20,7 @@ const Profile = () => {
 
   return (
     <div>
-      <img src={user.photoURL} alt="Profile" />
-      <h2>{user.name}</h2>
-      <p>Email: {user.email}</p>
-      <p>Phone: {user.phone || "N/A"}</p>
-      <p>Address: {user.address || "N/A"}</p>
-      <p>Bio: {user.bio}</p>
+      <h2>Email: {user.email}</h2>
       <p>Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
     </div>
   );

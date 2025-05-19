@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Mobile icons
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ const Navbar = () => {
     <nav className=" text-black p-4 shadow-md sticky top-0 z-50 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-red-600">
-          <h1 className="text-xl font-bold">Bhagavad Gita</h1>
+          <h1 className="text-xl font-bold">BHAGAVAD GITA </h1>
         </Link>
 
         {/* Desktop Navigation */}
@@ -19,7 +20,10 @@ const Navbar = () => {
           <Link to="/chapters" className="hover:underline">Chapters</Link>
           <Link to="/login" className="hover:underline">Login</Link>
           <Link to="/signup" className="hover:underline">Signup</Link>
-          <Link to="/profile" className="hover:underline">Profile</Link>
+          <Link to="/profile" className="flex items-center gap-2 hover:underline">
+          <FaUserCircle size={20} />
+          <span>Profile</span>
+          </Link>
           
         </div>
 
@@ -37,6 +41,7 @@ const Navbar = () => {
           <Link to="/chapters" className="hover:underline" onClick={() => setIsOpen(false)}>Chapters</Link>
           <Link to="/login" className="hover:underline" onClick={() => setIsOpen(false)}>Login</Link>
           <Link to="/signup" className="hover:underline" onClick={() => setIsOpen(false)}>Signup</Link>
+
         </div>
       )}
     </nav>
